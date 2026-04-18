@@ -1,0 +1,1755 @@
+================================================================================
+VEDIC ASTROLOGY INTERPRETATION SYSTEM — COMPLETE DEEP-DIVE REFERENCE
+================================================================================
+This document covers every component of the astrological logic framework in full
+detail, intended for programmatic reading and AI interpretation.
+================================================================================
+
+
+================================================================================
+SECTION 1: CORE INTERPRETATION PHILOSOPHY
+================================================================================
+
+DEFINITION
+----------
+Astrology, in this system, is treated as a Pattern Recognition System that
+operates at the intersection of three forces:
+  - Karma: the accumulated cause-and-effect record of a soul
+  - Time: the precise activation windows during which karma ripens
+  - Probability: the likelihood of an event given all chart factors combined
+
+It is NOT a deterministic system. The same chart can manifest differently
+depending on the choices, environment, and effort of the individual. The chart
+describes tendencies, themes, and timing windows — not fixed destinies.
+
+THE EVENT PREDICTION FORMULA
+-----------------------------
+Every event prediction is computed as a combination of six factors:
+
+  Event = House x Lord x Karaka x Dasha x Transit x Strength
+
+This means all six must be evaluated together. No single factor alone is
+sufficient to predict an event. Think of these as six locks that must all be
+open simultaneously for an event to manifest.
+
+WEIGHT PRIORITY OF FACTORS
+---------------------------
+Not all factors carry equal interpretive weight. The hierarchy is:
+
+  1. Dasha (Timing Period)    — 40% weight
+  2. House Lord               — 20% weight
+  3. Planet Strength          — 15% weight
+  4. Transit                  — 15% weight
+  5. Yogas (Combinations)     — 10% weight
+
+EXPLANATION OF WEIGHT LOGIC:
+
+Dasha carries the most weight (40%) because even the strongest chart will not
+produce an event if the relevant time period is not active. A person with a
+perfect marriage yoga will not marry during a period that has no connection to
+the 7th house. Timing governs all manifestation.
+
+House Lord (20%) carries more weight than planets sitting inside a house
+because the lord "owns" the house and takes its energy into whichever house the
+lord occupies. A planet merely visiting a house is a guest; the lord is the
+permanent owner.
+
+Planet Strength (15%) determines HOW a result manifests — strongly, partially,
+with obstacles, or with delay. A strong planet in the right Dasha gives clean,
+direct results. A weak planet gives distorted, delayed, or compromised results.
+
+Transit (15%) acts as a trigger mechanism. Transits do not create events; they
+fire events that are already primed by the Dasha. Without a supporting Dasha,
+even a powerful transit will produce only minor ripples.
+
+Yogas (10%) are special planetary combinations that amplify or qualify outcomes.
+They are bonuses layered on top of the base chart — not standalone event
+creators. An inactive yoga contributes nothing.
+
+THE CARDINAL RULE
+-----------------
+IF (Dasha is inactive for the relevant house/planet) THEN (Event = No
+Manifestation)
+
+This rule overrides all other considerations. No amount of strong planets,
+powerful yogas, or favorable transits will produce an event if the Dasha does
+not support it.
+
+
+================================================================================
+SECTION 2: PLANET STRENGTH SYSTEM
+================================================================================
+
+OVERVIEW
+--------
+Planet strength measures a planet's capacity to deliver the results of the
+houses it rules and occupies. A strong planet in a supportive Dasha gives full,
+direct, clear results. A weak or afflicted planet gives partial, distorted,
+delayed, or harmful results even in a favorable Dasha.
+
+Strength is calculated by summing multiple overlapping factors. Each factor adds
+or subtracts from a running total. The final score determines the planet's
+effective power.
+
+FACTOR 1: SIGN PLACEMENT
+-------------------------
+The zodiac sign a planet occupies is the foundational strength indicator.
+
+  Exalted        = +5
+  Own Sign       = +4
+  Friendly Sign  = +3
+  Neutral Sign   = +2
+  Enemy Sign     = +1
+  Debilitated    = -2
+
+Detailed explanation of each:
+
+EXALTED (+5):
+A planet in its exaltation sign is functioning at absolute peak capacity. It is
+like a specialist working in their perfect environment. The planet expresses its
+highest qualities with minimal interference.
+
+Exaltation signs:
+  Sun        — Aries
+  Moon       — Taurus
+  Mars       — Capricorn
+  Mercury    — Virgo
+  Jupiter    — Cancer
+  Venus      — Pisces
+  Saturn     — Libra
+  Rahu       — Gemini (or Taurus depending on tradition)
+  Ketu       — Sagittarius (or Scorpio depending on tradition)
+
+OWN SIGN (+4):
+A planet in a sign it rules is comfortable, reliable, and expressive. It knows
+the terrain. Results are consistent and direct.
+
+Sign rulerships:
+  Sun        — Leo
+  Moon       — Cancer
+  Mars       — Aries, Scorpio
+  Mercury    — Gemini, Virgo
+  Jupiter    — Sagittarius, Pisces
+  Venus      — Taurus, Libra
+  Saturn     — Capricorn, Aquarius
+  Rahu/Ketu  — No own sign (they are shadow points, not physical planets)
+
+FRIENDLY SIGN (+3):
+A planet placed in a sign ruled by a friendly planet operates with support. It
+is like working with a cooperative colleague. Results come with some ease but
+with less power than own sign.
+
+Planetary friendships (general):
+  Sun    — Friends: Moon, Mars, Jupiter. Enemies: Saturn, Venus. Neutral: Mercury
+  Moon   — Friends: Sun, Mercury. Enemies: None. Neutral: Mars, Jupiter, Venus, Saturn
+  Mars   — Friends: Sun, Moon, Jupiter. Enemies: Mercury. Neutral: Venus, Saturn
+  Mercury— Friends: Sun, Venus. Enemies: Moon. Neutral: Mars, Jupiter, Saturn
+  Jupiter— Friends: Sun, Moon, Mars. Enemies: Mercury, Venus. Neutral: Saturn
+  Venus  — Friends: Mercury, Saturn. Enemies: Sun, Moon. Neutral: Mars, Jupiter
+  Saturn — Friends: Mercury, Venus. Enemies: Sun, Moon, Mars. Neutral: Jupiter
+
+Note: Temporary friendships based on transit proximity also modify these, but
+permanent (natural) friendships are the baseline.
+
+NEUTRAL SIGN (+2):
+The planet functions adequately but without particular advantage or disadvantage.
+Results are average — neither enhanced nor suppressed.
+
+ENEMY SIGN (+1):
+The planet is uncomfortable. Its significations are stressed. It can still
+produce results (score is positive), but they come with friction, effort, and
+occasional misdirection.
+
+DEBILITATED (-2):
+The planet is in its lowest-functioning state. Debilitation is the opposite of
+exaltation. The planet's significations are severely compromised. In a Dasha of
+this planet, results related to its houses will be delayed, distorted, or
+accompanied by suffering.
+
+Debilitation signs:
+  Sun        — Libra
+  Moon       — Scorpio
+  Mars       — Cancer
+  Mercury    — Pisces
+  Jupiter    — Capricorn
+  Venus      — Virgo
+  Saturn     — Aries
+
+IMPORTANT NOTE — Neecha Bhanga (Cancellation of Debilitation):
+Debilitation can be cancelled or partially cancelled under certain conditions:
+  - The dispositor of the debilitated planet is in a Kendra from Lagna or Moon
+  - The planet that would be exalted in that sign is in a Kendra
+  - The debilitated planet itself is in a Kendra
+When Neecha Bhanga occurs, the planet actually gains extra strength and often
+produces exceptional results — especially in its Dasha. This is a crucial
+advanced consideration.
+
+FACTOR 2: HOUSE PLACEMENT
+--------------------------
+Beyond the sign, the house a planet occupies adds or subtracts strength.
+
+House groups and their scores:
+
+TRIKONA HOUSES (1, 5, 9) — +4:
+The most auspicious house positions. Called the "houses of fortune and dharma."
+  - 1st house: Self, body, personality, overall life direction
+  - 5th house: Intelligence, creativity, children, past-life merit
+  - 9th house: Fortune, higher learning, father, dharma, spirituality
+Any planet placed here gains strong support for its significations.
+
+KENDRA HOUSES (1, 4, 7, 10) — +3:
+The angular houses — considered powerful positions of action and manifestation.
+  - 1st house: Self (also Trikona, so double bonus)
+  - 4th house: Home, mother, emotions, property, vehicles
+  - 7th house: Marriage, partnerships, business, public
+  - 10th house: Career, authority, social status, government
+Planets here have the capacity to act powerfully in the world.
+
+NOTE: The 1st house is both Trikona (+4) and Kendra (+3). A planet placed in
+the 1st house receives the Trikona score of +4, making it one of the strongest
+possible positions.
+
+UPACHAYA HOUSES (3, 6, 10, 11) — +2:
+"Houses of growth." Malefic planets placed here actually improve over time. The
+3rd, 6th, and 11th especially benefit from malefics because competition,
+conflict, and aggressive energy are assets in these domains.
+  - 3rd house: Courage, siblings, communication, short travels, skills
+  - 6th house: Enemies, debts, service, health, competition
+  - 10th house: Career (also Kendra)
+  - 11th house: Gains, income, social networks, fulfillment of desires
+
+DUSTHANA HOUSES (6, 8, 12) — -3:
+The houses of difficulty, transformation, and obscuration.
+  - 6th house: Conflict, disease, debts, enemies, litigation
+  - 8th house: Death, transformation, sudden events, occult, inheritance
+  - 12th house: Loss, isolation, foreign lands, spirituality, moksha
+Planets placed here struggle to express their significations clearly. Results
+are delayed, distorted, or come through suffering. However, these placements
+can also grant profound depth, hidden power, and spiritual insight.
+
+NEUTRAL HOUSES (2, 3):
+These houses do not significantly amplify or suppress planet strength on their
+own. Context from the lord and other factors determines the quality of results.
+
+FACTOR 3: COMBUSTION
+---------------------
+Score: -3 when a planet is within close orb of the Sun.
+
+When a planet comes too close to the Sun in the chart, it is said to be
+"combust" — burned by the Sun's intense heat and light. The combust planet
+loses its individual voice and capacity to act independently.
+
+Standard combustion orbs (degrees from Sun):
+  Moon       — within 12 degrees
+  Mars       — within 17 degrees
+  Mercury    — within 14 degrees (8.5 degrees for exact combustion)
+  Jupiter    — within 11 degrees
+  Venus      — within 10 degrees (8 degrees for exact)
+  Saturn     — within 15 degrees
+
+Closer to exact conjunction = more severe combustion.
+
+The combust planet's significations are weakened or suppressed. A combust Venus
+in a Dasha of Venus may bring relationship difficulties, lack of comfort, or
+artistic blocks. A combust Mercury may impair logic, communication, and business.
+
+FACTOR 4: RETROGRADE MOTION
+-----------------------------
+Score: +2 to strength, but results become irregular and unpredictable.
+
+A retrograde planet appears to move backward in the sky from Earth's
+perspective. In astrology, this means the planet's energy turns inward —
+it is more internalized, reflective, and unconventional in its expression.
+
+Retrograde planets are considered strong in terms of raw energy (hence +2),
+but the delivery of results is erratic. The person may experience the planet's
+themes in unexpected ways, delays followed by sudden fulfillment, or results
+that come through roundabout paths.
+
+Retrograde Jupiter, for example, may give a person deep philosophical wisdom
+but make them question and re-examine belief systems repeatedly. Retrograde
+Saturn may delay karmic lessons but make them hit with greater intensity when
+they arrive.
+
+Retrograde planets are also said to be "re-doing" past-life karma associated
+with their significations.
+
+FACTOR 5: ASPECTS
+-----------------
+Benefic aspect = +2
+Malefic aspect = -2
+
+In Vedic astrology, planets cast aspects (drishti) on specific houses from
+their position. Every planet aspects the 7th house from itself (opposition).
+Additionally:
+
+Special full aspects:
+  Saturn   — also fully aspects 3rd and 10th houses from itself
+  Jupiter  — also fully aspects 5th and 9th houses from itself
+  Mars     — also fully aspects 4th and 8th houses from itself
+  Rahu/Ketu — aspect the 5th and 9th from themselves (tradition varies)
+
+Natural benefics and their effect:
+  Jupiter (the great benefic) — aspect adds +2 to any planet or house it touches
+  Venus — benefic aspect, adds +2
+  Well-placed Mercury — adds +2
+  Well-placed Waxing Moon — adds +2
+
+Natural malefics and their effect:
+  Saturn — aspect subtracts -2 (causes delay, pressure, restriction)
+  Mars   — aspect subtracts -2 (causes conflict, aggression, sudden events)
+  Rahu   — aspect subtracts -2 (causes confusion, obsession, irregular results)
+  Sun    — can be malefic by aspect in some contexts
+
+CALCULATING FINAL STRENGTH SCORE
+---------------------------------
+Add up all applicable factors for a given planet:
+
+Example: Saturn placed in Libra (exalted = +5), in the 10th house (Kendra = +3),
+receiving Jupiter's aspect (+2), not combust, not retrograde.
+Final score = +5 + +3 + +2 = +10 — an extremely powerful Saturn.
+
+Example: Venus placed in Virgo (debilitated = -2), in the 8th house (Dusthana = -3),
+combust (-3), receiving Mars aspect (-2).
+Final score = -2 + -3 + -3 + -2 = -10 — a severely afflicted Venus.
+
+STRENGTH SCORE INTERPRETATION SCALE
+-------------------------------------
+  +8 and above   : Very strong — planet gives full, clear, elevated results
+  +4 to +7       : Moderately strong — good results with some friction
+  +1 to +3       : Weak — partial results, some delays or struggles
+  0              : Neutral — the planet functions but without distinction
+  Negative score : Afflicted — planet gives distorted, delayed, harmful results
+                   in its Dasha. The more negative, the more severe.
+
+
+================================================================================
+SECTION 3: HOUSE LORD LOGIC — THE MOST IMPORTANT INTERPRETIVE PRINCIPLE
+================================================================================
+
+THE CORE PRINCIPLE
+------------------
+The results of a house depend MORE on the planet that rules that house (the
+house lord) than on the planets sitting inside the house.
+
+A planet sitting inside a house is a guest — temporary, influential but not
+controlling. The lord of that house is the permanent owner — wherever the lord
+goes, the house's energy follows.
+
+THE INTERPRETIVE TEMPLATE
+--------------------------
+IF (Lord of House X is placed in House Y)
+THEN (The results of House X manifest through the domain of House Y)
+
+The house where the lord sits becomes the CHANNEL through which the original
+house's results flow. This is the most foundational rule in chart reading.
+
+COMPLETE MAPPING OF 10TH HOUSE LORD IN EACH HOUSE
+--------------------------------------------------
+(10th house = career, status, authority, public role)
+
+10th lord in 1st:  Career is tied to personal identity. The person IS their
+                   work. Strong public image. Leadership by personality.
+
+10th lord in 2nd:  Career connected to family business, wealth accumulation,
+                   speech, or finance. Income from professional activity is
+                   primary focus. May work in banking, family enterprise.
+
+10th lord in 3rd:  Career in media, communication, writing, marketing, siblings'
+                   field, or short travels. Self-made through courage and skill.
+
+10th lord in 4th:  Career connected to homeland, real estate, education,
+                   mother, or domestic matters. May work from home. Strong
+                   private life connected to career.
+
+10th lord in 5th:  Career in creative fields, education, speculation, children,
+                   entertainment, or politics. Intelligence drives career success.
+
+10th lord in 6th:  Career in service industries — healthcare, law, military,
+                   government service. Work involves competition and conflict.
+                   Results delayed but achievable through effort. (Dusthana rule)
+
+10th lord in 7th:  Career through partnerships, marriage, public-facing roles,
+                   business, or foreign connections. Spouse may influence career.
+
+10th lord in 8th:  Career in research, occult, insurance, psychology, surgery,
+                   hidden knowledge, or transformation fields. Irregular career
+                   path. Sudden changes. (Dusthana rule)
+
+10th lord in 9th:  Excellent placement. Career connected to higher learning,
+                   law, philosophy, foreign countries, teaching, or religion.
+                   Fortune favors career significantly.
+
+10th lord in 10th: Powerful — lord in own house. Direct, strong career results.
+                   Person is highly career-focused. Public reputation matters.
+
+10th lord in 11th: Career brings gains, income, and social elevation. Success
+                   through networks and connections. Career and income align.
+
+10th lord in 12th: Career in foreign countries, behind-the-scenes roles,
+                   spirituality, hospitals, prisons, or isolation. May involve
+                   sacrifice. Gains through overseas. (Dusthana rule)
+
+COMPLETE MAPPING OF 7TH HOUSE LORD IN EACH HOUSE
+-------------------------------------------------
+(7th house = marriage, partnerships, public dealings, business)
+
+7th lord in 1st:   Spouse influences identity strongly. Partnership is central
+                   to life. Marriage comes through personal initiative.
+
+7th lord in 2nd:   Marriage connected to family wealth or family arrangement.
+                   Spouse contributes to family finances. Wealth through marriage.
+
+7th lord in 3rd:   Partner may be from siblings' circle or communications field.
+                   Marriage requires effort and courage. Short courtship.
+
+7th lord in 4th:   Spouse connected to home, mother, education. Happy domestic
+                   life. Marriage brings emotional security and property.
+
+7th lord in 5th:   Love marriage. Romantic, creative spouse. Children enhance
+                   marriage. Strong emotional connection.
+
+7th lord in 6th:   Marriage delayed or conflicted. Legal disputes in marriage.
+                   Spouse may be in medical or service profession. Divorce risk.
+                   (Dusthana rule)
+
+7th lord in 7th:   Strong marriage. Lord in own house — direct partnership results.
+                   Person values relationships deeply. May have prominent spouse.
+
+7th lord in 8th:   Transformative marriage. Spouse may be from different
+                   background. Sudden events through marriage. Possible inheritance
+                   through spouse. Marriage changes life dramatically. (Dusthana)
+
+7th lord in 9th:   Very auspicious marriage. Spouse may be educated, foreign, or
+                   spiritually inclined. Marriage brings fortune and wisdom.
+
+7th lord in 10th:  Career and marriage intertwined. Spouse contributes to career.
+                   Public-facing marriage. May meet spouse through work.
+
+7th lord in 11th:  Marriage brings gains and social elevation. Spouse is
+                   well-networked. Fulfillment of desires through partnership.
+
+7th lord in 12th:  Spouse may be from foreign country. Marriage involves
+                   sacrifice or isolation. Spiritual connection in marriage.
+                   (Dusthana rule — delay or difficulty possible)
+
+THE DUSTHANA RULE — DETAILED EXPLANATION
+-----------------------------------------
+When a house lord is placed in a Dusthana house (6, 8, or 12), the results of
+that house become:
+
+DELAYED: Results come later than expected. Marriage at older age, career
+recognition after years of struggle, children after trying for long.
+
+DISTORTED: Results come in unexpected or unconventional form. Instead of a
+traditional marriage, an unusual relationship structure. Instead of mainstream
+career, a niche or hidden field.
+
+TRANSFORMATIVE: The house's themes force growth through challenge. A 5th lord
+in the 8th may produce a child who transforms the person's life, or intelligence
+that develops through deep trauma and research.
+
+It is critical to understand that Dusthana placements are not always purely
+negative. The 8th house is depth, research, and transformation. The 12th house
+is spirituality, foreign settlement, and liberation. A lord placed there can
+grant these elevated domains — but through non-linear, difficult paths.
+
+EXCEPTION — VIPREET RAJ YOGA:
+When a Dusthana lord goes to another Dusthana (e.g., 6th lord in 8th, or 12th
+lord in 6th), this actually creates a powerful yoga called Vipreet Raj Yoga.
+The negative energies cancel each other out and produce unexpected fortune and
+rise — especially in the Dasha of those planets. The person may rise
+dramatically after a period of severe difficulty. (See Section 6: Yoga Logic)
+
+THE MUTUAL EXCHANGE RULE (PARIVARTANA YOGA)
+--------------------------------------------
+When two house lords exchange signs — Lord of House A is in House B, and Lord
+of House B is in House A — this creates a Parivartana Yoga (exchange yoga).
+
+The result: both houses become powerfully connected. Their significations
+merge and enhance each other. This is one of the most powerful configurations
+in a chart because it gives both lords the combined strength of two houses.
+
+Example: 9th lord in 10th, and 10th lord in 9th.
+This creates a powerful Dharma-Karma Adhipati yoga — fortune and career are
+fully intertwined. The person's career IS their dharma. Great professional
+success with fortune supporting it.
+
+
+================================================================================
+SECTION 4: THE DASHA DECISION ENGINE
+================================================================================
+
+SYSTEM: VIMSHOTTARI DASHA
+--------------------------
+The Vimshottari Dasha is the primary timing system used in this framework. It
+is a 120-year planetary cycle where each of the nine planets rules a specific
+number of years. The starting point of the cycle is determined by the Moon's
+position in a Nakshatra (lunar mansion) at the time of birth.
+
+THE 120-YEAR CYCLE
+-------------------
+Planet     Duration (years)
+---------  ----------------
+Ketu             7
+Venus           20
+Sun              6
+Moon            10
+Mars             7
+Rahu            18
+Jupiter         16
+Saturn          19
+Mercury         17
+---------  ----------------
+Total:         120 years
+
+The cycle follows the above sequence. A person born with Moon in a particular
+Nakshatra begins their life in the Dasha of the lord of that Nakshatra, and the
+remaining portion of that planet's years (based on Moon's exact degree within
+the Nakshatra) is the first Dasha period of their life.
+
+NAKSHATRA-PLANET RULERSHIPS
+----------------------------
+Nakshatra        Lord
+Ashwini          Ketu
+Bharani          Venus
+Krittika         Sun
+Rohini           Moon
+Mrigashira       Mars
+Ardra            Rahu
+Punarvasu        Jupiter
+Pushya           Saturn
+Ashlesha         Mercury
+Magha            Ketu
+Purva Phalguni   Venus
+Uttara Phalguni  Sun
+Hasta            Moon
+Chitra           Mars
+Swati            Rahu
+Vishakha         Jupiter
+Anuradha         Saturn
+Jyeshtha         Mercury
+Mula             Ketu
+Purva Ashadha    Venus
+Uttara Ashadha   Sun
+Shravana         Moon
+Dhanishtha       Mars
+Shatabhisha      Rahu
+Purva Bhadrapada Jupiter
+Uttara Bhadrapada Saturn
+Revati           Mercury
+
+THE THREE LEVELS OF TIMING
+---------------------------
+Dasha operates in nested sub-periods:
+
+MAHADASHA (Major Period):
+Duration determined by the planet (6-20 years as listed above).
+The Mahadasha sets the THEME of the entire period. It colors life with the
+qualities of that planet. Every event during a Mahadasha carries the flavor
+of that planet's nature, house ownership, and natal strength.
+
+Saturn Mahadasha (19 years) = Theme of karma, discipline, hard work, delay,
+structured growth, karmic settlements, service, and maturity.
+
+Jupiter Mahadasha (16 years) = Theme of expansion, wisdom, children, teaching,
+fortune, spirituality, and optimism.
+
+Venus Mahadasha (20 years) = Theme of relationships, luxury, creative expression,
+comfort, beauty, and worldly enjoyment.
+
+ANTARDASHA (Sub-Period / Bhukti):
+Duration = fraction of the Mahadasha, determined by the sub-period planet's
+own Dasha years as a proportion of 120.
+
+The Antardasha sets the EVENT within the Mahadasha theme. It is the planet
+that delivers the specific happening — the marriage, the job change, the birth
+of a child, the financial windfall or loss.
+
+Saturn Mahadasha / Venus Antardasha:
+Theme: Karmic discipline (Saturn) + Event channel: relationships and comfort (Venus)
+Result: A relationship or marriage that comes after significant effort and patience.
+A creative career built through disciplined hard work. Financial comfort earned
+through structured effort. Luxury is possible but it is worked for, not gifted.
+
+Rahu Mahadasha / Jupiter Antardasha:
+Theme: Obsession, worldly ambition, unconventional path (Rahu) + Event: wisdom,
+children, expansion (Jupiter)
+Result: Rapid expansion in career or wealth, possibly through unconventional means.
+A child may be born. Higher education may begin. But Jupiter's wisdom is filtered
+through Rahu's sometimes distorting lens — discernment is key.
+
+PRATYANTAR DASHA (Sub-Sub-Period):
+Narrows timing to months within the Antardasha. Calculation follows the same
+proportional logic. Used for pinpointing specific months when events may occur.
+
+SOOKSHMA AND PRANA DASHAS:
+Even finer sub-divisions that narrow timing to weeks and days. Rarely used in
+regular interpretation but useful for very precise timing work.
+
+THE BLEND RULE — HOW TO INTERPRET DASHA COMBINATIONS
+------------------------------------------------------
+The result of any Dasha period = BLEND of both planets' qualities AND house ownerships.
+
+Step 1: Identify what houses the Mahadasha lord rules in the natal chart.
+Step 2: Identify what houses the Antardasha lord rules in the natal chart.
+Step 3: Look for shared or complementary themes between these house ownerships.
+Step 4: Check the strength of both planets.
+Step 5: Apply the Mahadasha theme as background, Antardasha as the foreground event.
+
+Example for a chart with Scorpio Ascendant:
+Mahadasha = Jupiter (rules 2nd and 5th houses in Scorpio Lagna)
+Antardasha = Mars (rules 1st and 6th houses in Scorpio Lagna)
+
+Jupiter-Mars blend: 2nd house (wealth, speech, family) + 5th house (intelligence,
+children) + 1st house (self, health) + 6th house (effort, competition).
+Result theme: Personal health and identity become intertwined with wealth and
+children during this period. Financial growth through effort and competition.
+Intelligence monetized. Possible birth of a child. Increased self-focus.
+
+ACTIVATION RULE — CRITICAL
+---------------------------
+Only planets that are actively running in Dasha can give their results.
+
+A planet NOT in Dasha is like a sleeping employee — present in the organization
+(chart) but not actively contributing to that period's output. No matter how
+strong a planet is natally, it cannot produce significant events outside its
+own Dasha period.
+
+This is why two people with similar natal placements can have vastly different
+life timelines — they begin their Dasha cycles at different points and therefore
+activate different planets at different life stages.
+
+
+================================================================================
+SECTION 5: TRANSIT TRIGGER SYSTEM
+================================================================================
+
+THE FUNDAMENTAL DISTINCTION
+-----------------------------
+Transits TRIGGER events. Transits do NOT create events.
+
+This is perhaps the most misunderstood principle in predictive astrology. A
+favorable Jupiter transit over the 7th house does NOT guarantee marriage. It
+provides an activation window. For marriage to occur, the Dasha must already be
+running the relevant planets (7th lord, Venus, etc.). The transit is the match;
+the Dasha is the fuel.
+
+IF (Transit activates a natal house/lord that is already active in Dasha)
+THEN (The event has high probability of materializing in that transit window)
+
+IF (Transit activates a house/lord that is NOT active in Dasha)
+THEN (Minor effect only — awareness, thoughts, social activity — no major event)
+
+THE THREE KEY TRANSITING PLANETS
+---------------------------------
+
+SATURN TRANSIT:
+Speed: Approximately 2.5 years per sign (very slow).
+Nature: Karmic, restrictive, disciplining, transformative.
+Method: Saturn's transit is traditionally counted from the Moon's natal sign.
+
+Sade Sati (7.5-year Saturn influence):
+When Saturn transits the sign immediately before the natal Moon, over the natal
+Moon, and the sign immediately after it — this creates the Sade Sati period
+(3 phases × 2.5 years each = 7.5 years total).
+Each phase carries distinct themes:
+  Phase 1 (before Moon sign): Challenges related to family, finances, father.
+  Phase 2 (over Moon sign): Emotional pressure, identity challenges, career shifts.
+  Phase 3 (after Moon sign): Results and settling — either rewards or final lessons.
+
+Kantaka Sani: Saturn in the 4th, 7th, or 10th from natal Moon — periods of
+significant obstacles in home, relationships, or career respectively.
+
+Ashtama Sani: Saturn transiting the 8th from natal Moon — often the most intense
+phase, associated with health challenges, major life changes, hidden difficulties.
+
+JUPITER TRANSIT:
+Speed: Approximately 1 year per sign.
+Nature: Expansive, protective, opportunistic, wisdom-bringing.
+Effect: Jupiter transiting a house opens that house for expansion and opportunity.
+
+Jupiter over natal Moon: New beginnings, optimism, emotional healing.
+Jupiter transiting 7th: Window for marriage and partnership opportunities.
+Jupiter transiting 2nd/11th: Financial expansion and income growth.
+Jupiter transiting 10th: Career advancement and recognition.
+Jupiter transiting 5th: Children, creative success, speculation gains.
+
+IMPORTANT: Jupiter transit must align with supporting Dasha for major events.
+Jupiter transiting the 7th during a Saturn or Mars Dasha unrelated to 7th house
+= awareness of relationship possibilities but likely no actual marriage.
+
+RAHU TRANSIT:
+Speed: Approximately 18 months per sign (retrograde).
+Nature: Sudden, unconventional, materialistic, obsessive, amplifying.
+Effect: Rahu transit over a house or planet makes those themes hyperactive,
+unusual, or subject to sudden change. Can produce sudden gains or sudden losses.
+Results are often surprising — better or worse than expected.
+
+Rahu over natal planets: That planet's significations become obsessive or
+amplified in unconventional ways.
+Rahu over Jupiter: Expansion that may overreach or operate through shortcuts.
+Rahu over Moon: Mental restlessness, foreign influences, unconventional desires.
+Rahu over Saturn: Unusual karmic events, sudden career restructuring.
+
+KETU TRANSIT:
+Speed: Moves with Rahu (always opposite).
+Nature: Detachment, past mastery, spiritual triggers, sudden endings.
+Effect: Ketu over a house or planet creates separation from those significations
+— endings, completions, detachment. Beneficial for spiritual growth, less so for
+worldly pursuits.
+
+THE DOUBLE TRANSIT RULE
+------------------------
+One of the most reliable transit triggers is when BOTH Jupiter AND Saturn
+simultaneously aspect or transit the same house or planet. This is called a
+"double transit" activation and greatly increases the probability of an event
+manifesting, provided the Dasha is also supportive.
+
+Common double transit windows for major events:
+- Both transiting the 7th house or 7th lord = strong marriage window
+- Both activating the 10th house = career change or major recognition
+- Both over the 5th house = children or major creative/speculative events
+
+THE TRIPLE CONFIRMATION RULE
+-----------------------------
+Maximum certainty for an event occurs when:
+  1. The relevant house/lord is active in Dasha (Mahadasha or Antardasha)
+  2. The ruling planet is in a favorable transit
+  3. A secondary transit (Jupiter or Saturn) also activates the relevant house
+
+All three confirming simultaneously = highest probability window for the event.
+
+
+================================================================================
+SECTION 6: KARAKA (SIGNIFICATOR) SYSTEM
+================================================================================
+
+DEFINITION OF KARAKA
+---------------------
+A Karaka is the natural planetary significator of a particular life area. Every
+planet, by its inherent nature (regardless of chart position), represents
+certain things. This natural significance adds another layer of analysis on top
+of house lords.
+
+There are two types of Karakas:
+  1. Naisargika (Natural/Permanent) Karakas — fixed for all charts
+  2. Chara (Variable) Karakas — change based on degrees in each chart (used in
+     Jaimini astrology; not the primary focus of this framework)
+
+NAISARGIKA KARAKAS — COMPLETE LIST
+------------------------------------
+
+SUN (Surya):
+  Primary: Soul, self-expression, identity, authority, ego, willpower
+  Secondary: Father, government, kings/leaders, medicine, bones, eyes (right)
+  Signs ruled: Leo
+  Day: Sunday
+  Karaka for: 1st house (self), 10th house (authority/government)
+  Weakness when afflicted: Low confidence, poor relationship with father,
+  health issues related to heart and eyes, conflicts with authority.
+
+MOON (Chandra):
+  Primary: Mind, emotions, instincts, subconscious, nurturing, adaptability
+  Secondary: Mother, home, public, water, liquids, fertility, breast, lungs
+  Signs ruled: Cancer
+  Day: Monday
+  Karaka for: 4th house (mother/home), emotional wellbeing
+  Weakness when afflicted: Emotional instability, poor relationship with mother,
+  depression, mental health issues, digestive problems.
+  NOTE: Moon's strength is paramount — a weak Moon produces a person with
+  difficulty processing emotions regardless of other chart factors.
+
+MARS (Mangal/Kuja):
+  Primary: Energy, aggression, courage, action, drive, physical strength
+  Secondary: Brothers/siblings, property, accidents, surgery, blood, muscles
+  Signs ruled: Aries, Scorpio
+  Day: Tuesday
+  Karaka for: 3rd house (courage/siblings), 6th house (conflict), 10th house
+  (in some systems)
+  Weakness when afflicted: Aggression, accidents, conflict in relationships,
+  property disputes, blood disorders, impulsive decisions.
+  Strength when well-placed: Athletic ability, military/police success, engineering
+  aptitude, courage, entrepreneurial drive.
+
+MERCURY (Budha):
+  Primary: Intellect, logic, communication, language, trade, analysis
+  Secondary: Skin, nervous system, aunts/uncles, accounting, writing, publishing
+  Signs ruled: Gemini, Virgo
+  Day: Wednesday
+  Karaka for: 2nd house (speech), 4th house (education in some systems),
+  10th house (commerce), 11th house (networks)
+  Weakness when afflicted: Communication difficulties, logical errors, poor
+  business judgment, nervous system issues, learning disabilities.
+  Strength when well-placed: Exceptional intelligence, business acumen, powerful
+  communication, success in writing, teaching, accounting, IT.
+
+JUPITER (Guru/Brihaspati):
+  Primary: Wisdom, knowledge, expansion, fortune, dharma, optimism, spirituality
+  Secondary: Children (especially for women as Putrakaraka), husband (for women),
+  teachers, wealth, liver, hips, fat tissue
+  Signs ruled: Sagittarius, Pisces
+  Day: Thursday
+  Karaka for: 2nd house (wealth), 5th house (children/intelligence), 9th house
+  (fortune/dharma), 11th house (gains)
+  Weakness when afflicted: Poor judgment, over-expansion, indulgence, weight
+  issues, liver problems, difficulties with children or teachers.
+  Strength when well-placed: Profound wisdom, teaching ability, wealth through
+  knowledge, spiritual progress, blessings and luck in life.
+
+VENUS (Shukra):
+  Primary: Love, beauty, luxury, pleasure, artistic ability, relationships
+  Secondary: Wife (for men as Kalatra Karaka), vehicles, semen, kidneys,
+  entertainment, fashion, gems, sugar/sweets
+  Signs ruled: Taurus, Libra
+  Day: Friday
+  Karaka for: 7th house (marriage/partnership), 2nd house (accumulated wealth),
+  4th house (comforts), 12th house (bed pleasures/luxury)
+  Weakness when afflicted: Relationship difficulties, lack of financial comfort,
+  kidney issues, low aesthetic sense, loss of luxury or vehicles.
+  Strength when well-placed: Magnetic attractiveness, artistic mastery, happy
+  marriage, financial comfort and luxury, success in entertainment/beauty fields.
+
+SATURN (Shani):
+  Primary: Karma, discipline, hard work, delay, restriction, longevity, patience
+  Secondary: Masses/common people, servants, old age, chronic disease, bones,
+  teeth, legs, underground, oil, metal, construction
+  Signs ruled: Capricorn, Aquarius
+  Day: Saturday
+  Karaka for: 6th house (service/disease), 8th house (longevity), 10th house
+  (karma/career), 12th house (isolation)
+  Behavior pattern: Delay → Discipline → Eventual Reward. Saturn rarely gives
+  easy results but always gives EARNED results. What Saturn grants, it does not
+  take away easily.
+  Weakness when afflicted: Chronic delays, depression, joint/bone problems,
+  karmic debts manifesting as repeated obstacles, social isolation, poverty.
+  Strength when well-placed: Extraordinary discipline, mastery through practice,
+  lasting success built over time, strong work ethic, political power.
+
+RAHU (North Node):
+  Primary: Obsession, material desire, illusion, foreign cultures, innovation
+  Secondary: Paternal grandfather, technology, chemicals, poisons, manipulation,
+  sudden events, unconventional paths, amplification
+  No sign ruler (shadow point)
+  Karaka for: 12th house (in some traditions), foreign lands, sudden rise and fall
+  Behavior: Rahu amplifies whatever it touches, makes it larger than life, and
+  then often distorts it. It gives sudden, dramatic results — both positive and
+  negative. It is the planet of worldly obsession.
+  Effect when active: Sudden rise in career, foreign opportunity, unconventional
+  success, material gains, but also confusion, illusion, and ethical compromise.
+
+KETU (South Node):
+  Primary: Detachment, past-life mastery, spirituality, liberation, sudden endings
+  Secondary: Maternal grandfather, mysticism, occult, isolation, sudden losses,
+  completion of karma
+  No sign ruler (shadow point)
+  Karaka for: 8th house (occult), 12th house (moksha)
+  Behavior: Ketu removes attachment. Where Ketu sits, the person has past-life
+  mastery but tends toward detachment or disinterest in those matters in this
+  life. Ketu gives sudden endings and unexpected insights.
+  Effect when active: Spiritual awakening, endings and completions, sudden events,
+  loss of material things but gain of inner wisdom.
+
+THE HOUSE-KARAKA COMBINATION RULE
+----------------------------------
+For strongest results:
+  BOTH the relevant house AND its natural Karaka must be strong.
+
+IF (House strong AND Karaka strong)
+THEN (Strong, clear, full results in that life area)
+
+IF (House strong AND Karaka weak)
+THEN (Partial results — the potential exists but is not fully realized)
+
+IF (House weak AND Karaka strong)
+THEN (Partial results — the person has the inner capacity but circumstances don't
+fully support it)
+
+IF (House weak AND Karaka weak)
+THEN (Very poor results — that life area is significantly compromised)
+
+Examples:
+Marriage quality depends on: 7th house strength + 7th lord strength + Venus
+strength (natural Karaka for marriage). All three must be evaluated.
+
+Wealth depends on: 2nd house + 11th house + 2nd lord + 11th lord + Jupiter
+strength (Karaka for wealth). Multiple factors align for true financial success.
+
+Children depends on: 5th house + 5th lord + Jupiter (for women especially) all
+being strong without severe affliction.
+
+
+================================================================================
+SECTION 7: YOGA ACTIVATION LOGIC
+================================================================================
+
+DEFINITION OF YOGA
+-------------------
+A Yoga is a specific planetary combination that creates a particular outcome —
+positive or negative — beyond what the individual planets would produce on their
+own. Yogas are "combination upgrades" that amplify results significantly when
+properly activated.
+
+THE THREE CONDITIONS FOR YOGA ACTIVATION
+-----------------------------------------
+A yoga must meet ALL THREE conditions to produce its results:
+
+  Condition 1: The planets forming the yoga must be reasonably strong
+  Condition 2: At least one of the yoga-forming planets must be active in Dasha
+  Condition 3: The yoga must not be heavily afflicted by malefics
+
+An inactive yoga = zero additional results. A yoga sitting dormant in the chart
+does nothing until the relevant Dasha activates it.
+
+MAJOR POSITIVE YOGAS — DETAILED
+----------------------------------
+
+RAJ YOGA (Royal Combination):
+Definition: A Kendra lord (1, 4, 7, or 10) and a Trikona lord (1, 5, or 9)
+are in conjunction, mutual aspect, or exchange.
+Effect: Gives power, authority, recognition, and elevation of status. The person
+rises to prominence in their field. The strength of the Raj Yoga depends on
+which Kendra and which Trikona are involved, and the strength of the planets.
+Note: The 1st house is both Kendra and Trikona — its lord can form Raj Yoga by
+connecting with lords of other Kendras or Trikonas.
+Best Raj Yogas: 9th + 10th lord conjunction/exchange (Dharma-Karma Adhipati
+Yoga), 5th + 10th lord, 4th + 9th lord.
+Activation: In Dasha of either or both planets forming the yoga.
+
+DHAN YOGA (Wealth Combination):
+Definition: Connection between 2nd house lord and 11th house lord (through
+conjunction, aspect, exchange, or placement in each other's houses). Also
+includes combinations of 2nd/11th with 5th or 9th lords.
+Effect: Accumulation of wealth and material gains. The more Dhan Yogas in a
+chart, the greater the wealth potential.
+Supporting factors: Jupiter's aspect on 2nd or 11th house strengthens Dhan Yoga.
+Activation: In Dasha of 2nd lord, 11th lord, or Jupiter.
+
+PANCHA MAHAPURUSHA YOGAS (Five Great Person Combinations):
+Formed when certain planets are in own sign or exaltation AND placed in a
+Kendra house (1, 4, 7, 10):
+  Ruchaka Yoga (Mars): Gives military/police success, physical strength, courage
+  Bhadra Yoga (Mercury): Gives intelligence, communication mastery, business success
+  Hamsa Yoga (Jupiter): Gives wisdom, spiritual authority, wealth through knowledge
+  Malavya Yoga (Venus): Gives luxury, artistic talent, happy relationships, vehicles
+  Shasha Yoga (Saturn): Gives political power, mass influence, longevity, discipline
+
+GAJAKESARI YOGA:
+Definition: Jupiter in Kendra from Moon (1st, 4th, 7th, or 10th from Moon).
+Effect: Wisdom, wealth, fame, honorable life. Considered a highly auspicious
+yoga that protects the entire chart.
+Activation: Jupiter Dasha or Moon Dasha especially potent for manifesting this.
+
+BUDHADITYA YOGA:
+Definition: Sun and Mercury in conjunction (within the same sign).
+Effect: Intelligence, strong communication, government connections, success in
+academics and administration.
+Note: If Mercury is combust (too close to Sun), this yoga is weakened.
+Activation: Sun or Mercury Dasha.
+
+NEECHA BHANGA RAJ YOGA:
+Definition: Debilitation of a planet is cancelled through specific conditions
+(see Section 2 — Neecha Bhanga), turning the weakness into exceptional strength.
+Effect: After initial struggles, the person often rises dramatically and achieves
+what ordinary "strong" planets cannot. The reversal of debilitation creates
+unusual determination and ultimate success.
+Activation: The debilitated planet's own Dasha, especially if transit conditions
+also support the cancellation.
+
+MAJOR NEGATIVE YOGAS
+----------------------
+
+KEMDRUM YOGA:
+Definition: Moon with no planets in adjacent houses (2nd and 12th from Moon)
+AND no planets conjoining Moon.
+Effect: Loneliness, lack of support, mental instability, financial struggle.
+The person may feel fundamentally unsupported in life.
+Cancellation: If Moon is in Kendra from Lagna, or if a planet aspects Moon.
+
+GRAHAN YOGA (Eclipse Combination):
+Definition: Sun or Moon conjunct Rahu or Ketu.
+Effect: Confusion about identity (Sun-Rahu), emotional instability (Moon-Rahu/
+Ketu), distorted perceptions, identity eclipsed by obsession or detachment.
+
+GURU CHANDAL YOGA:
+Definition: Jupiter conjunct Rahu or Ketu.
+Effect: Distorted wisdom, unethical teachers, knowledge used for wrong purposes,
+spiritual confusion. The person may be brilliant but prone to ethical compromise.
+
+VIPREET RAJ YOGA — SPECIAL CASE
+---------------------------------
+Definition: A Dusthana lord (6th, 8th, or 12th house lord) placed in another
+Dusthana house. Three types:
+  Harsha Yoga: 6th lord in 8th or 12th
+  Sarala Yoga: 8th lord in 6th or 12th
+  Vimala Yoga: 12th lord in 6th or 8th
+
+Effect: Negative energies cancel each other. The person rises after periods of
+severe difficulty, often dramatically. They have an unusual capacity to overcome
+adversity. Enemies and obstacles ultimately fail to stop them.
+
+This yoga often manifests as: a person who should have failed (by chart logic)
+but instead rises spectacularly during the Dasha of the Dusthana lords involved.
+
+Important: This yoga is often missed because astrologers look at Dusthana lords
+negatively. The key is the combination — Dusthana lord in another Dusthana
+transforms the negative into a reversal of fortune.
+
+YOGA ASSESSMENT CHECKLIST
+--------------------------
+For every yoga identified in a chart:
+  Step 1: Are the forming planets sufficiently strong? (Score above 0?)
+  Step 2: Are there heavy malefic afflictions on the planets or houses? (Reduce
+  expected results proportionally if yes)
+  Step 3: Is one of the yoga planets currently active in Dasha or Antardasha?
+  Step 4: Is a transit activating the yoga as well?
+  Step 5: Is the Lagna (Ascendant) and its lord strong? (A weak Lagna lord
+  undermines all yogas in the chart)
+If all five steps are positive: yoga is highly active and results will manifest.
+If Step 3 fails: yoga is dormant regardless of all other factors.
+
+
+================================================================================
+SECTION 8: DOSHA ANALYSIS ENGINE
+================================================================================
+
+DEFINITION OF DOSHA
+--------------------
+A Dosha is a chart affliction — a specific planetary configuration that creates
+difficulty, delay, or disruption in a particular life domain. Doshas are not
+destiny — they are amplifiers of challenge that can be navigated through
+awareness, appropriate partners, remedies, and spiritual practices.
+
+MANGAL DOSHA (Mars Affliction)
+-------------------------------
+Definition: Mars placed in the 1st, 4th, 7th, 8th, or 12th house of the natal
+chart.
+
+Why these houses?
+  1st house: Mars directly aspects 7th (marriage/partner) from self
+  4th house: Mars aspects 7th and 10th — marital home and career are disturbed
+  7th house: Mars sits directly in marriage house — conflict in partnership
+  8th house: Mars in house of transformation/death — may affect spouse's longevity
+  12th house: Mars aspects 7th from 12th — hidden conflicts in marriage
+
+Effect of Mangal Dosha:
+Primary: Delay in marriage, conflict within marriage, marital disharmony, legal
+disputes in partnerships. In severe cases (especially 7th and 8th house Mars
+without cancellation), early widowhood or divorce.
+Secondary: Health issues for the native or spouse, property disputes, family
+conflict.
+
+Severity Scale:
+Most severe: Mars in 7th or 8th house (especially in enemy/debilitated sign)
+Moderate: Mars in 1st or 4th house
+Lesser: Mars in 12th house
+
+CANCELLATION CONDITIONS (Dosha is nullified when):
+  1. Mars is in own sign (Aries or Scorpio) — the aggressive energy is channeled
+     productively
+  2. Mars is exalted (in Capricorn) — strength overrides the dosha
+  3. Mars is conjunct or aspected by Jupiter — Jupiter's wisdom neutralizes Mars
+  4. The partner's chart also has Mangal Dosha — matching dosha cancels effects
+  5. Mars is in Aquarius or Cancer — certain traditional cancellations apply
+  6. Moon or Saturn is in 1st, 2nd, 4th, 7th, 8th, or 12th (various traditions)
+
+Practical guidance: Mangal Dosha is one of the most over-applied and
+over-feared concepts in Indian astrology. Always assess:
+  a) Is Mars actually strong or weak?
+  b) Is Mars aspected by benefics?
+  c) Does the 7th house and its lord have other supportive factors?
+Dosha = an amplifier of challenge, not an automatic sentence.
+
+KAAL SARP DOSHA (Serpent's Time Affliction)
+---------------------------------------------
+Definition: All seven main planets (Sun, Moon, Mars, Mercury, Jupiter, Venus,
+Saturn) are positioned between Rahu and Ketu in the natal chart, with no planet
+outside the Rahu-Ketu axis.
+
+Mechanism: Rahu and Ketu, the shadow planets, trap the entire planetary system
+on one side of the chart. The life is said to oscillate between extreme highs
+and lows, with periods of intense struggle followed by periods of success.
+
+Types of Kaal Sarp based on which houses Rahu-Ketu occupy:
+Anant KS (Rahu 1st/Ketu 7th): Affects self and partnerships
+Kulik KS (Rahu 2nd/Ketu 8th): Affects wealth and transformation
+Vasuki KS (Rahu 3rd/Ketu 9th): Affects siblings and fortune
+Shankhapal KS (Rahu 4th/Ketu 10th): Affects home and career
+Padma KS (Rahu 5th/Ketu 11th): Affects children and gains
+Mahapadma KS (Rahu 6th/Ketu 12th): Affects enemies and losses
+(and six more in the second half of the zodiac when reversed)
+
+Effects:
+  - Life feels like two steps forward, one step back
+  - Intense psychological experiences
+  - Vivid dreams, sometimes prophetic
+  - Strong connection to spirituality or the occult
+  - Periods of isolation followed by social success
+  - The person often achieves great things but through non-conventional paths
+
+Partial Kaal Sarp: If one or two planets are outside the Rahu-Ketu axis, the
+dosha is reduced in severity. Some traditions require full containment.
+
+Activation: Kaal Sarp effects are most prominent during Rahu or Ketu Mahadasha
+and during transit periods when Rahu and Ketu receive strong activation.
+
+Positive dimension: Many highly successful individuals have Kaal Sarp Dosha.
+The intense psychological drive it creates can push people to extraordinary
+achievement. The dosha must be read in the full context of the chart.
+
+DOSHA ASSESSMENT RULE
+----------------------
+Dosha = Amplifier of Difficulty, NOT a destiny.
+
+A chart with multiple doshas and strong yogas = a life of intense challenge AND
+intense achievement. The struggle and the success co-exist.
+
+A chart with doshas but very strong Lagna, Lagna lord, and Jupiter = the native
+has the inner resources to overcome the challenges the doshas create.
+
+Remedies for Doshas (general categories):
+  - Planetary gemstones (worn for the afflicted planet)
+  - Mantras and chanting of specific planetary hymns
+  - Charitable acts related to the afflicted planet's domain
+  - Fasting on the day of the afflicted planet
+  - Performance of specific Pujas (worship rituals)
+  - Matching partner's chart for complementary/cancelling doshas (for marriage)
+
+
+================================================================================
+SECTION 9: ADVANCED HOUSE GROUPING
+================================================================================
+
+THE FOUR HOUSE GROUPS — PURUSHARTHAS (AIMS OF LIFE)
+-----------------------------------------------------
+The twelve houses are divided into four groups of three, each corresponding to
+one of the four Purusharthas — the classical aims of human life:
+
+DHARMA HOUSES (1, 5, 9) — Purpose, righteousness, duty
+ARTHA HOUSES (2, 6, 10) — Wealth, material resources, work
+KAMA HOUSES (3, 7, 11) — Desires, relationships, ambitions
+MOKSHA HOUSES (4, 8, 12) — Liberation, depth, transcendence
+
+DHARMA HOUSES (1, 5, 9)
+------------------------
+1st house: The self — who you ARE, your dharma by nature
+5th house: Intelligence and creativity — how you EXPRESS your dharma
+9th house: Higher wisdom and fortune — how the universe SUPPORTS your dharma
+
+IF Dharma houses are strong (strong lords, benefic planets, good house condition):
+THEN: The person lives a purpose-driven life with clear direction. They are
+guided by principles and values. Decisions align with a deeper calling. Fortune
+tends to support them when they act in alignment with their higher purpose.
+The 9th house especially being strong creates what is called "Bhagya" (fortune)
+— the person seems to be in the right place at the right time.
+
+Afflicted Dharma houses: Identity confusion, lack of purpose, moral struggles,
+poor fortune, disconnection from deeper meaning.
+
+ARTHA HOUSES (2, 6, 10)
+------------------------
+2nd house: Accumulated wealth, family resources, what you own
+6th house: Work ethic, daily service, dealing with obstacles
+10th house: Career, public role, how you earn and create in the world
+
+IF Artha houses are strong:
+THEN: The person is strongly focused on material security and wealth creation.
+They are hardworking, practically oriented, and financially minded. Career is
+central to identity. Wealth accumulation is a primary life theme.
+Financial success tends to be a major area of achievement.
+
+Afflicted Artha houses: Financial instability, career struggles, work conflicts,
+inability to accumulate despite efforts.
+
+KAMA HOUSES (3, 7, 11)
+-----------------------
+3rd house: Personal desires, skills, courage, communication style
+7th house: Partnership desires, what you seek in relationships
+11th house: Social desires, ambitions, fulfillment through networks
+
+IF Kama houses are strong:
+THEN: The person is strongly desire-driven, ambitious, socially oriented, and
+focused on achieving personal goals and satisfying relationships. High social
+energy. Strong ambition. Network-building is natural. Fulfillment comes through
+desired outcomes being achieved and relationships thriving.
+
+Afflicted Kama houses: Unfulfilled desires, relationship struggles, social
+difficulties, blocked ambitions, inability to attract what one wants.
+
+MOKSHA HOUSES (4, 8, 12)
+-------------------------
+4th house: Inner peace, emotional depth, ancestral roots, private self
+8th house: Transformation, death and rebirth cycles, hidden dimensions
+12th house: Surrender, spiritual liberation, letting go, foreign escape
+
+IF Moksha houses are strong:
+THEN: The person has a natural pull toward spirituality, introspection, and
+transcendence. They may not prioritize worldly success as strongly. Meditation,
+occult studies, spiritual practices, and inner exploration are natural domains.
+They may experience life as impermanent and feel called toward liberation.
+Foreign travel and residence, spiritual retreat, and charitable giving are common.
+
+Afflicted Moksha houses: Inability to let go, fear of death/change, spiritual
+confusion, excessive isolation, losses without spiritual compensation.
+
+READING CHART EMPHASIS BY HOUSE GROUP
+---------------------------------------
+When analyzing a chart, count:
+  - How many planets are in Dharma houses?
+  - How many in Artha houses?
+  - How many in Kama houses?
+  - How many in Moksha houses?
+
+The house group with the most planets (especially strong planets) reveals the
+person's dominant life orientation. Multiple planets in Artha houses = a
+wealth-focused, career-driven individual. Multiple in Moksha houses = a
+spiritual, introspective personality who may struggle with materialism.
+
+COMBINING HOUSE GROUPS
+-----------------------
+Dharma + Artha dominant: A person who builds wealth through principled, purposeful
+work. Career aligns with calling. Highly ethical in business.
+
+Dharma + Kama dominant: A person driven by both purpose and desires. Strong social
+life and relationships but guided by values. Often in creative, social, or
+teaching professions.
+
+Kama + Artha dominant: A practically ambitious person. Money and social status
+are the primary drives. Highly competitive, socially active, business-minded.
+
+Dharma + Moksha dominant: A deeply spiritual person with strong purpose but little
+worldly ambition. Likely drawn to teaching, healing, philosophy, or renunciation.
+
+All four groups equally distributed: A balanced life with multiple domains active —
+harder to specialize but easier to find overall wellbeing.
+
+
+================================================================================
+SECTION 10: PLANET BEHAVIOR MODELS — DETAILED CHARACTER PROFILES
+================================================================================
+
+Each planet operates according to a distinct behavioral pattern. Understanding
+these patterns is essential for accurate event prediction and interpretation.
+
+SATURN (Shani) — THE TASKMASTER
+---------------------------------
+Behavioral sequence: Delay → Discipline → Reward
+Core principle: Nothing comes easily; everything earned through Saturn is lasting.
+
+Saturn operates on a simple but relentless logic: it refuses to give results
+until the person has truly earned them through effort, patience, and karmic
+alignment. It is the planet of long-term consequences.
+
+In Dasha: The initial phase of Saturn Mahadasha often brings challenges,
+restructuring, hard work, and confrontation with karmic debts. The middle phase
+brings discipline and methodical progress. The final phase delivers the rewards
+of sustained effort — often significant career advancement, financial stability,
+and social recognition.
+
+Saturn gives AFTER effort. It does not reward shortcuts, luck, or inheritance
+alone. When Saturn gives, the results tend to be stable and lasting.
+
+Saturn afflicted: Chronic delays, depression, social isolation, joint diseases,
+poverty, harsh life circumstances, repeated frustrations.
+Saturn well-placed: Supreme discipline, political power, mass influence, longevity,
+extraordinary achievements through sustained effort (especially in Saturn MD).
+
+JUPITER (Guru) — THE EXPANDER
+-------------------------------
+Behavioral sequence: Touch → Expand → Bless
+Core principle: Jupiter makes everything it touches larger, more abundant, wiser.
+
+Jupiter is the great benefic. Wherever Jupiter is placed, whatever it aspects,
+whatever Dasha it runs — all those significations expand. It is the planet of
+grace, wisdom, and divine support.
+
+Jupiter in a house: That house's significations multiply. Jupiter in the 2nd —
+wealth grows. Jupiter in the 5th — children, intelligence, creative output
+multiply. Jupiter in the 9th — already a fortune house, becomes enormously
+powerful for luck and spiritual grace.
+
+Jupiter Dasha: Often one of the most prosperous periods of life — children born,
+wealth expands, wisdom deepens, career advances through knowledge. But the timing
+depends on Jupiter's strength and house ownership. A debilitated Jupiter or one
+ruling difficult houses can give expansion of challenges too.
+
+RAHU — THE OBSESSOR
+--------------------
+Behavioral sequence: Attract → Obsess → Amplify → Distort
+Core principle: Rahu wants everything material, magnifies it, and often distorts it.
+
+Rahu is the planet of worldly obsession, illusion, and unconventional paths. It
+gives what you desire but often not in the way you expected, and sometimes at
+a hidden cost.
+
+Rahu gives sudden rise, especially in the fields it rules: technology, foreign
+countries, chemicals, mass media, politics, and anything unconventional. But it
+can also create sudden falls and can distort judgment — the person gets what
+they think they want, only to find it was not what they truly needed.
+
+Rahu Dasha (18 years): A major period of worldly engagement. Often one of the
+most dramatic, productive, and sometimes chaotic periods of life. Foreign
+travel, career leaps, and unexpected events are common. The quality depends
+entirely on Rahu's natal position and house associations.
+
+KETU — THE DETACHER
+--------------------
+Behavioral sequence: Disconnect → Withdraw → Realize → Liberate
+Core principle: Ketu dissolves attachment to its significations, bringing
+past-life mastery but current-life disinterest.
+
+Where Rahu obsesses, Ketu detaches. Ketu in the 7th house — detachment from
+marriage (may avoid it or find it unfulfilling despite having it). Ketu in the
+2nd — detachment from wealth accumulation. Ketu in the 10th — detachment from
+career recognition.
+
+But Ketu gives mastery. A person with Ketu in the 5th has deep past-life
+intelligence and may be naturally gifted without effort. Ketu in the 9th
+suggests past-life spiritual development — the person may have an intuitive
+grasp of philosophy without formal study.
+
+Ketu Dasha (7 years): Often a spiritually rich but worldly confusing period.
+Endings, completions, withdrawal from the material. Excellent for spiritual
+practice, research, and inner work. Challenging for maintaining career
+momentum or relationship stability.
+
+MARS (Mangal) — THE WARRIOR
+-----------------------------
+Behavioral pattern: Impulse → Action → Conflict → Resolution
+Core principle: Mars acts first, considers consequences second.
+
+Mars is pure energy — brave, direct, and often aggressive. Well-placed Mars
+gives athletic ability, entrepreneurial drive, courage, and executive capacity.
+Afflicted Mars gives impulsiveness, aggression, accidents, and conflict.
+
+Mars Dasha (7 years): A period of intense activity, competition, and physical
+energy. New ventures launched. Conflicts arise and are resolved. Physical health
+and stamina are themes. For those with strong Mars in favorable houses, this is
+a period of accomplishment and decisive forward movement.
+
+VENUS (Shukra) — THE INDULGER
+-------------------------------
+Behavioral pattern: Attract → Enjoy → Refine → Create
+Core principle: Venus seeks beauty, harmony, and pleasure in all things.
+
+Venus is the natural Karaka for love, beauty, and luxury. A strong Venus gives
+a magnetic personality, artistic ability, financial comfort, and happy
+relationships. Venus rules enjoyment — food, music, art, fashion, romance.
+
+Venus Dasha (20 years): Often the longest pleasant period in life. Relationships
+form and deepen. Creative work flourishes. Financial comfort increases. For
+those with Venus ruling important houses, this can be the peak of worldly
+achievement. The duration (20 years) means its quality matters enormously.
+
+MERCURY (Budha) — THE ANALYST
+-------------------------------
+Behavioral pattern: Observe → Analyze → Communicate → Connect
+Core principle: Mercury seeks to understand and articulate everything.
+
+Mercury is the planet of the mind's rational function. It governs language,
+logic, data, commerce, and all forms of communication. A strong Mercury gives
+sharp intelligence, business acumen, and communication mastery.
+
+Mercury Dasha (17 years): Intellectual productivity, communication focus, business
+activity, writing, and study are highlighted. Multiple projects often run
+simultaneously. The mind is active and engaged.
+
+MOON (Chandra) — THE FEELER
+-----------------------------
+Behavioral pattern: Sense → Feel → React → Adapt
+Core principle: Moon reflects and responds; it is the mind's emotional surface.
+
+The Moon is the most personal planet — it governs the moment-to-moment
+emotional experience of life. A strong Moon gives emotional intelligence,
+nurturing ability, good memory, and public connection. An afflicted Moon gives
+emotional instability, anxiety, depression, and poor relationship with the mother.
+
+Moon Dasha (10 years): The emotional self is the primary focus. Relationships
+with mother and family are highlighted. Intuition is strong. Public connections
+may increase. Mental health either thrives or struggles prominently during this
+period depending on Moon's natal strength.
+
+SUN (Surya) — THE AUTHORITY
+-----------------------------
+Behavioral pattern: Express → Lead → Illuminate → Rule
+Core principle: Sun seeks recognition, authority, and the assertion of individual will.
+
+Sun is the soul's indicator — the planet of identity, leadership, and divine
+authority. A strong Sun gives confidence, leadership ability, government
+connections, and a clear sense of purpose. An afflicted Sun creates ego struggles,
+authority conflicts, and poor relationship with the father.
+
+Sun Dasha (6 years): Self-focus, leadership opportunities, government or authority
+connections, health attention, and career recognition. The person's identity and
+unique contribution to the world are highlighted.
+
+
+================================================================================
+SECTION 11: EVENT PREDICTION TEMPLATES
+================================================================================
+
+MARRIAGE PREDICTION PROTOCOL
+------------------------------
+Step 1 — Assess 7th house:
+  Is it occupied by any planet? Which planet? What is that planet's nature?
+  Benefics here generally assist; malefics create friction.
+
+Step 2 — Assess 7th lord:
+  Where is the 7th lord placed (which house)?
+  What is the 7th lord's strength score?
+  Is the 7th lord in a Dusthana (delay), Kendra (strength), or Trikona (fortune)?
+
+Step 3 — Assess Venus (for male charts) / Jupiter (for female charts):
+  What is Venus's strength score?
+  Is Venus in own/friendly sign? Exalted? Debilitated?
+  Is Venus conjunct or aspected by malefics (delay/distortion)?
+  For female charts: same analysis for Jupiter as Putrakaraka/Darakaraka.
+
+Step 4 — Identify Dasha windows:
+  Is the current or upcoming Dasha running 7th lord, Venus, 5th lord (romance),
+  or 11th lord (fulfillment of desires)?
+  Does the Antardasha planet also connect to 7th house themes?
+
+Step 5 — Check transits:
+  Is Jupiter transiting the 7th house from Lagna or Moon?
+  Is Saturn transiting in a position that activates the 7th house?
+  Is the double transit condition met (both Jupiter and Saturn activating 7th)?
+
+Step 6 — Check for delay factors:
+  Saturn aspecting or placed in 7th house = delay.
+  Rahu/Ketu in 7th = unconventional marriage or unusual timing.
+  7th lord in Dusthana = delay and/or difficulty.
+  Multiple malefics in 7th = significant delay or repeated partnership challenges.
+
+CONDITION: IF (7th house factors active in Dasha AND transit trigger present)
+THEN (Marriage is likely in that window)
+
+CAREER PREDICTION PROTOCOL
+----------------------------
+Step 1 — Assess 10th house and its lord:
+  Which planets sit in the 10th?
+  Where is the 10th lord placed?
+  10th lord's strength score?
+
+Step 2 — Assess Saturn (Karaka for career, especially service/discipline roles):
+  Saturn's strength and house placement?
+  Saturn's Dasha status?
+
+Step 3 — Assess Sun (Karaka for authority, government, leadership roles):
+  Sun's strength and placement?
+
+Step 4 — Assess relevant Dasha:
+  Is 10th lord active in Mahadasha or Antardasha?
+  Is Saturn active?
+  Is the Lagna lord active (strong Lagna lord = strong overall life force)?
+
+Step 5 — Transit check:
+  Jupiter transiting 10th = career expansion window.
+  Saturn transiting 10th = career restructuring or major karmic career event.
+  Jupiter and Saturn both activating 10th = very significant career event.
+
+CONDITION: IF (10th house factors active in Dasha AND transit supporting)
+THEN (Career growth or significant career change)
+
+WEALTH PREDICTION PROTOCOL
+----------------------------
+Step 1 — Assess 2nd house (accumulated wealth, family money):
+  Planets in 2nd? 2nd lord placement and strength?
+
+Step 2 — Assess 11th house (gains, income, income from work and network):
+  Planets in 11th? 11th lord placement and strength?
+
+Step 3 — Assess Jupiter (Karaka for wealth and abundance):
+  Jupiter's strength? Where is Jupiter placed?
+
+Step 4 — Identify Dasha windows:
+  Are 2nd lord, 11th lord, or Jupiter active in Dasha?
+  Are there Dhan Yogas being activated?
+
+Step 5 — Transit check:
+  Jupiter transiting 2nd or 11th from Lagna or Moon = income/gains window.
+
+CONDITION: IF (2nd and 11th house factors active in Dasha AND Jupiter transit
+supportive) THEN (Financial gains and income growth)
+
+HEALTH PREDICTION PROTOCOL
+----------------------------
+Step 1 — Assess Lagna (1st house) and Lagna lord:
+  Lagna lord strength is the primary health indicator.
+  Malefics in Lagna = health challenges.
+
+Step 2 — Assess Moon:
+  Moon's strength = mental health and immunity.
+  Afflicted Moon = psychological health concerns.
+
+Step 3 — Assess 8th house:
+  8th house = longevity and serious illness.
+  Planets and lord of 8th = nature of potential health themes.
+
+Step 4 — Assess 6th house:
+  6th house = disease, enemies of the body.
+  Strong 6th can indicate disease but also the capacity to overcome it.
+
+Step 5 — Dasha check:
+  Running Dasha of 6th lord, 8th lord, or afflicted planets = health vigilance.
+  Particularly: if a severely afflicted malefic is running its Dasha,
+  health matters need attention.
+
+CONDITION: IF (Lagna lord weak AND 6th/8th lords active in Dasha AND malefic
+transit over Lagna or Moon) THEN (Health vulnerability period — increased caution)
+
+
+================================================================================
+SECTION 12: FAILURE CONDITIONS — WHEN THE CHART UNDERPERFORMS
+================================================================================
+
+A chart can have many positive features yet still underperform in delivering
+results. The failure conditions are the blocking factors that must be addressed
+before optimistic predictions are made.
+
+FAILURE CONDITION 1: WEAK LAGNA LORD
+--------------------------------------
+The Lagna lord is the CEO of the chart. Every yoga, every planet, every
+favorable Dasha delivers its results THROUGH the Lagna lord's capacity.
+
+If the Lagna lord is severely afflicted (debilitated without cancellation,
+combust, in Dusthana with heavy malefic affliction), the entire chart suffers.
+The person may have wealth yogas but lack the vitality and personal agency to
+access them. They may have career yogas but lack the confidence or health to
+pursue them.
+
+Assessment: Calculate Lagna lord's strength score. If deeply negative, temper
+all other predictions significantly.
+
+FAILURE CONDITION 2: WEAK MOON
+--------------------------------
+The Moon governs the mind — without a stable mind, nothing else can function
+optimally. Even a chart with excellent planetary placements and favorable Dashas
+will produce confusion, emotional blocks, and self-sabotage if the Moon is
+severely afflicted.
+
+A weak Moon (Scorpio placement, conjunct Rahu or Ketu, aspected by Saturn and
+Mars simultaneously, in Kemdrum Yoga) creates:
+  - Emotional instability that disrupts decision-making
+  - Difficulty maintaining consistent effort
+  - Mental health challenges that interfere with external success
+  - Poor relationship with mother affecting emotional foundation
+
+Assessment: Moon's sign placement + aspects on Moon + Nakshatra + Dasha. If
+Moon is severely afflicted, emotional intelligence and mental stability must be
+factored as limiting variables in all predictions.
+
+FAILURE CONDITION 3: NO DASHA SUPPORT
+---------------------------------------
+As stated in the Cardinal Rule: without Dasha activation, events do not
+manifest. This is the most common reason predictions fail — the chart has the
+yoga/potential, but the timing isn't right.
+
+If someone asks about marriage but is running a Mars-Mercury Dasha with no
+connection to 7th house or Venus, marriage in that period is unlikely regardless
+of how strong the 7th house looks.
+
+Assessment: Always verify Dasha before confirming any event prediction.
+
+FAILURE CONDITION 4: HEAVY SATURN AFFLICTION
+---------------------------------------------
+Saturn's restrictive influence on key planets or houses can compress or delay
+even favorable yogas significantly. Specific worst-case scenarios:
+
+Saturn aspecting or conjuncting the 7th lord = marriage delay.
+Saturn conjuncting Venus = relationship restriction.
+Saturn in Lagna aspected by Mars = health and vitality challenges.
+Saturn conjuncting Jupiter = wisdom and fortune compressed.
+Saturn on the 11th house = gains restricted despite effort.
+
+Important: Saturn eventually relents if the person persists with discipline
+and karmic alignment. The delay is not permanent — it is karmic adjustment.
+
+Assessment: Map Saturn's natal aspects and its transit positions over key natal
+planets. Acknowledge delays in affected areas rather than dismissing them.
+
+FAILURE CONDITION 5: RAHU ILLUSION OVERPOWERING LOGIC
+------------------------------------------------------
+Rahu's influence can create a powerful desire for something that doesn't
+actually serve the person — and can make that desire feel like destiny.
+
+When Rahu is active in Dasha and strongly placed, the person may pursue
+materialistic or unconventional goals with intense focus. But Rahu's results
+are often temporary, illusory, or come with hidden complications. The person
+achieves what they obsessed over only to find it wasn't truly fulfilling.
+
+In prediction: During strong Rahu periods, be cautious about interpreting
+driven ambition as guaranteed success. The path may be unconventional and the
+results may be mixed.
+
+COMBINED FAILURE READING
+-------------------------
+The presence of multiple failure conditions doesn't mean a life without success.
+It means the success that does come will be harder-won, delayed, and require
+more self-awareness and effort than charts without these conditions. Even a
+chart with all five failure conditions can produce meaningful achievement — but
+through extraordinary effort, spiritual alignment, and patience.
+
+
+================================================================================
+SECTION 13: META INTELLIGENCE RULES — THE DECISION HIERARCHY
+================================================================================
+
+When multiple interpretive factors seem to conflict or when the chart is complex,
+these five meta-rules provide the tiebreaker hierarchy:
+
+META RULE 1: DASHA > TRANSIT > YOGA
+-------------------------------------
+When timing is in question, always prioritize Dasha status first.
+
+Example: A powerful Raj Yoga is present, Jupiter is transiting the 10th house,
+but the person is running a Moon-Saturn Dasha with no 10th house connection.
+Answer: The yoga is dormant. The transit creates awareness and minor opportunity.
+No major career event in this window.
+
+Yoga identification without Dasha verification = incomplete prediction.
+Transit excitement without Dasha support = false hope.
+
+META RULE 2: HOUSE LORD > PLANET IN HOUSE
+-------------------------------------------
+When interpreting a house's results, always look at the lord first.
+
+Example: The 7th house has Jupiter sitting in it. But the 7th lord (say Venus)
+is debilitated and in the 8th house. Which matters more?
+Answer: Venus (the lord) matters more. Marriage will be delayed, difficult, or
+transformative despite Jupiter's presence. Jupiter's presence may add some grace
+or optimism to the marriage domain but does not override the lord's affliction.
+
+The lord owns the house. The guest planet (Jupiter here) influences but does not
+control outcomes.
+
+META RULE 3: STRENGTH > COMBINATION
+--------------------------------------
+A weak planet cannot deliver its yoga results regardless of how many yogas it
+forms.
+
+Example: Jupiter forms both a Raj Yoga and a Gajakesari Yoga, but Jupiter is
+debilitated (in Capricorn) without Neecha Bhanga, combust, and in the 8th house.
+Answer: The yogas are present on paper but are largely suppressed. Jupiter's
+results will be distorted and its yogas will not give full results. Strength
+determines delivery capacity.
+
+The lesson: Always calculate strength before getting excited about yogas.
+
+META RULE 4: TIMING > POTENTIAL
+---------------------------------
+The most gifted chart without the right timing is like a seed in frozen soil.
+
+Example: A person has an extraordinary wealth yoga — multiple Dhan Yogas, strong
+Jupiter, exalted Venus, powerful 11th house. But they are 55 years old and have
+never experienced wealth. Examination reveals: the relevant Dasha periods for
+these yogas were Venus MD (ages 8-28) when they were too young to capitalize,
+and Jupiter MD (ages 28-44) which brought moderate success. The current Saturn
+MD (ages 44-63) has no direct connection to the wealth houses.
+Answer: The potential was real but the timing windows have partially passed. The
+remaining strength may still give some moderate results in supporting sub-periods,
+but the peak window has narrowed.
+
+Timing is the great equalizer — it doesn't matter what you have if it's not
+the right season.
+
+META RULE 5: KARMA (ACTION) MODIFIES OUTCOME
+----------------------------------------------
+This is the most human and least mechanistic rule. The chart describes tendencies
+and timing windows — not fixed fates. Personal choices, effort, spiritual
+practices, and ethical living can shift outcomes within the range that the chart
+permits.
+
+A person with a Saturn Mahadasha can have an exceptionally productive period if
+they align with Saturn's values: discipline, service, patience, ethical
+responsibility, and sustained effort. The same Mahadasha experienced passively
+or with resistance produces its worst outcomes.
+
+A person with Mangal Dosha who works on emotional regulation, selects a
+compatible partner, and approaches marriage with maturity may have a perfectly
+happy marriage despite the dosha.
+
+Karma = action. The chart describes the terrain. The person chooses how to walk
+through it.
+
+PRACTICAL APPLICATION OF META RULES
+--------------------------------------
+When making any prediction, apply the rules in order:
+
+Step 1 (Rule 1): Is the Dasha active for the relevant house/planet? If no, stop.
+Step 2 (Rule 2): What does the house lord say? (Not just what's sitting in the house)
+Step 3 (Rule 3): Are the relevant planets strong enough to deliver?
+Step 4 (Rule 4): Is this the right timing window in the person's life?
+Step 5 (Rule 5): What choices can the person make to optimize or mitigate outcomes?
+
+Only after all five steps are completed is a prediction appropriately formed.
+
+
+================================================================================
+SECTION 14: SYNTHESIS — READING A COMPLETE CHART
+================================================================================
+
+The following is a suggested step-by-step methodology for applying all the
+above systems together when reading a chart:
+
+STEP 1: ASSESS THE LAGNA (ASCENDANT)
+Identify the Lagna sign and its lord. Calculate the Lagna lord's strength score.
+This sets the chart's overall vitality. Everything else is colored by this.
+
+STEP 2: ASSESS THE MOON
+Calculate Moon's strength. Identify the Moon sign, Nakshatra, aspects on Moon,
+and whether Moon is in Kemdrum or Gajakesari condition. This reveals the
+person's emotional and mental baseline.
+
+STEP 3: MAP ALL TWELVE HOUSE LORDS
+For each house lord, identify:
+  a) Which house it rules
+  b) Which house it sits in
+  c) Its strength score (sign + house + aspects + combustion + retrograde)
+
+This creates the foundational house lord map.
+
+STEP 4: IDENTIFY KEY YOGAS
+Scan for Raj Yogas, Dhan Yogas, Pancha Mahapurusha Yogas, Vipreet Raj Yogas,
+and negative yogas. Note which planets are involved.
+
+STEP 5: ASSESS DOSHAS
+Check for Mangal Dosha and Kaal Sarp Dosha. Note cancellation conditions.
+
+STEP 6: IDENTIFY THE CURRENT DASHA PERIOD
+Determine the current Mahadasha, Antardasha, and if needed, Pratyantar Dasha.
+Map these planets to their house ownerships, placements, and strength.
+
+STEP 7: APPLY THE EVENT PREDICTION TEMPLATES
+For the life areas the person is asking about (marriage, career, wealth, health),
+apply the relevant template from Section 11.
+
+STEP 8: CROSS-REFERENCE WITH TRANSITS
+Check current Saturn and Jupiter transit positions relative to Lagna and Moon.
+Identify if the double transit condition is active for the relevant house.
+
+STEP 9: APPLY THE META RULES
+Verify through all five meta-rules before finalizing predictions.
+
+STEP 10: ACCOUNT FOR FAILURE CONDITIONS
+Check all five failure conditions. If present, temper predictions accordingly
+and include guidance on how to navigate the challenges.
+
+STEP 11: COMMUNICATE WITH PROBABILISTIC LANGUAGE
+This system operates on probability and karma, not fixed fate. Use language
+that honors this:
+  "There is a strong window for career growth in this period..."
+  "Marriage is favored in the upcoming 2-3 year window if..."
+  "The chart suggests wealth potential but it requires..."
+  NOT: "You WILL get married at age 28."
+  NOT: "You will definitely become rich in Jupiter Dasha."
+
+
+================================================================================
+END OF DOCUMENT
+================================================================================
+Total coverage: 14 sections spanning Core Philosophy, Planet Strength, House
+Lord Logic, Dasha System, Transit Triggers, Karaka Significators, Yoga Activation,
+Dosha Analysis, House Grouping, Planet Behavior Models, Event Templates, Failure
+Conditions, Meta Intelligence Rules, and Chart Reading Synthesis.
+================================================================================
