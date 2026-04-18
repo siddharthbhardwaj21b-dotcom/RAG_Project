@@ -2,21 +2,25 @@ import streamlit as st
 import google.generativeai as genai
 import chromadb
 import warnings
+import os
+from dotenv import load_dotenv
 
+# Load variables from your hidden .env file
+load_dotenv()
 warnings.filterwarnings("ignore")
 
 # --- 1. UI CONFIG ---
 st.set_page_config(page_title="Vedic AI Astrologer", layout="wide")
 st.title("Vedic AI Astrologer 🌙")
 
-# --- 2. INITIALIZE SESSION STATE (MUST BE AT THE TOP) ---
+# --- 2. INITIALIZE SESSION STATE ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # --- 3. SIDEBAR: BIRTH DATA & SETTINGS ---
 with st.sidebar:
     st.header("Birth Chart Data")
-    st.info("Since AI cannot calculate degrees yet, please input your chart details below.")
+    st.info("Input your manual chart details for the AI to interpret.")
     
     user_lagna = st.selectbox("Lagna (Ascendant)", [
         "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", 
@@ -25,11 +29,15 @@ with st.sidebar:
     
     user_placements = st.text_area(
         "Planetary Placements", 
-        placeholder="e.g., Sun in 10th House, Moon in Taurus 4th House, Mars in 12th House..."
+        placeholder="e.g., Sun in 10th House, Moon in Taurus 4th House..."
     )
     
     st.divider()
-    api_key = st.text_input("Gemini API Key", type="password", value="AIzaSyBOMACqTvxVmMXurnCSkZsVbjhv9sR4cT0")
+    
+    # Securely pulls your key from the .env file instead of hardcoding it!
+    default_key = os.getenv("GEMINI_API_KEY", "")
+    api_key = st.text_input("Gemini API Key", type="password", value=default_key)
+    
     uploaded_logic = st.file_uploader("Upload Astrology Logic (TXT)", type="txt")
     
     if st.button("Clear Chat History"):
@@ -37,7 +45,6 @@ with st.sidebar:
         st.rerun()
 
 # --- 4. CORE AI SETUP ---
-# Initialize model as None to prevent errors if API key is missing
 model = None
 collection = None
 
@@ -55,11 +62,9 @@ if api_key:
         system_instruction=instruction
     )
     
-    # Initialize Database
     chroma_client = chromadb.Client()
     collection = chroma_client.get_or_create_collection(name="astrology_logic")
 
-    # Load Knowledge Base
     if uploaded_logic:
         content = uploaded_logic.read().decode("utf-8")
         collection.add(documents=[content], ids=["user_upload"])
@@ -69,29 +74,26 @@ if api_key:
                 content = f.read()
             collection.add(documents=[content], ids=["default_rules"])
         except FileNotFoundError:
-            st.warning("Please create 'knowledge_base.txt' or upload a file.")
+            st.warning("Knowledge base not found. Please upload a logic file.")
 
 # --- 5. CHAT INTERFACE ---
-# Display chat history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Handle User Input
 if prompt := st.chat_input("Ask about your chart..."):
     if not api_key:
-        st.error("Please enter your API Key in the sidebar.")
+        st.error("Please provide an API Key in the sidebar or .env file.")
+    elif collection is None:
+        st.error("Database not initialized. Please provide astrology logic.")
     else:
-        # Add user message to history
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # RAG Logic
         results = collection.query(query_texts=[prompt], n_results=1)
-        context = results['documents'][0][0]
+        context = results['documents'][0][0] if results['documents'] else "No specific rules found."
 
-        # Construct Augmented Prompt
         full_prompt = f"""
         USER CHART DATA:
         Lagna: {user_lagna}
@@ -104,7 +106,6 @@ if prompt := st.chat_input("Ask about your chart..."):
         {prompt}
         """
 
-        # Generate and display response
         response = model.generate_content(full_prompt)
         
         st.session_state.messages.append({"role": "assistant", "content": response.text})
