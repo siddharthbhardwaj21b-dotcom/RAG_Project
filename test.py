@@ -5,7 +5,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # 1. Provide your secret key
-API_KEY = "AIzaSyBOMACqTvxVmMXurnCSkZsVbjhv9sR4cT0"
+API_KEY = "YOUR_KEY_HERE"
 genai.configure(api_key=API_KEY)
 
 # 2. Pick the brain from your specific menu
