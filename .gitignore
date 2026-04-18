@@ -1,11 +1,23 @@
-# API Keys and Secrets
+# --- Secrets & Config ---
 .env
+.env.local
+.env.*
 
-# Python/System files
+# --- Python Environment ---
+venv/
+env/
 __pycache__/
 *.py[cod]
-.DS_Store
+*$py.class
 
-# Private Data
-knowledge_base.txt
+# --- Local Databases & Data ---
 chroma_db/
+knowledge_base.txt
+# This ignores all data files so you don't leak your astrology research
+*.txt
+*.pdf
+*.csv
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
